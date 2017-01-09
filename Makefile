@@ -1,2 +1,2 @@
 all:
-	echo "Running all"
+	@echo "Running all"
