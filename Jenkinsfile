@@ -1,6 +1,6 @@
 node{
   checkout scm
   stage('Test'){
-    sh 'make'
+    sh 'make all'
   }
 }
