@@ -1,2 +1,3 @@
-echo "Success"
-exit 0
+import sys
+print("This is from python")
+sys.exit(0)
