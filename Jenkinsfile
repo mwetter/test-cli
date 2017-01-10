@@ -1,7 +1,7 @@
 node{
   checkout scm
   stage('Build'){
-    sh 'docker images'
+    sh 'sudo docker images'
   }
   stage('Test'){
     sh 'python bin/runUnitTests.py'
