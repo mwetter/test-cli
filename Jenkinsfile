@@ -6,6 +6,6 @@ node{
     sh 'sudo pip install git+https://github.com/lbl-srg/BuildingsPy'
   }
   stage('Test'){
-    sh 'cd Buildings && python ../bin/runUnitTests.py --validate-html-only'
+    sh 'cd Buildings && python ../bin/runUnitTests.py -b'
   }
 }
