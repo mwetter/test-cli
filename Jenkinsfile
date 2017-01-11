@@ -1,7 +1,8 @@
 node{
   checkout scm
   stage('Build'){
-    sh 'sudo docker images'
+    sh 'sudo pip install --upgrade pip && sudo pip install git+https://github.com/lbl-srg/BuildingsPy'
+#    sh 'sudo docker images'
   }
   stage('Test'){
     sh 'python bin/runUnitTests.py'
