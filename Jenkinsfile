@@ -1,11 +1,11 @@
 #!groovy
 
 node{
-  checkout scm
   stage('Build'){
-    sh 'sudo pip install git+https://github.com/lbl-srg/BuildingsPy'
+    sh 'sudo pip install git+https://github.com/lbl-srg/BuildingsPy@cli-testing'
   }
   stage('Test'){
+    checkout scm    
     sh 'cd Buildings && ls -l && python ../bin/runUnitTests.py -b'
   }
 }
