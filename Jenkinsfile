@@ -2,7 +2,7 @@
 
 node{
   stage('Build'){
-    sh 'sudo pip install --upgrade git+https://github.com/lbl-srg/BuildingsPy@cli-testing'
+    sh 'sudo pip install --upgrade git+https://github.com/lbl-srg/BuildingsPy@master'
   }
   stage('Test'){
     checkout scm    
