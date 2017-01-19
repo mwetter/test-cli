@@ -6,6 +6,6 @@ node{
   }
   stage('Test'){
     checkout scm    
-    sh 'cd Buildings && ls -l && python ../bin/runUnitTests.py -b'
+    sh 'git clean -f && cd Buildings && python ../bin/runUnitTests.py -b'
   }
 }
