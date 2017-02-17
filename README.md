@@ -1,2 +1,2 @@
 # test-cli
-For testing
+For testing.
