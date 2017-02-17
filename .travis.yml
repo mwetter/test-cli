@@ -3,4 +3,4 @@ python:
   - "2.7"
  
  # command to install dependencies
-install: "pip install --upgrade git+https://github.com/lbl-srg/BuildingsPy@master"
+install: "pip install git+https://github.com/lbl-srg/BuildingsPy@master"
