@@ -10,6 +10,5 @@ install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
 
 script:
- - python --version
  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
  
