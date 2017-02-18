@@ -10,9 +10,11 @@ install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
  - shopt -s expand_aliases
  - alias ls="ls -lh"
+ - echo "#!/bin/bash\nls -lh $@" > /usr/bin/some_command.sh
+ - chmod +x /usr/bin/some_command.sh
 
 # Execute tests
 script:
  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
- - ls .
+ - some_command Buildings
  
