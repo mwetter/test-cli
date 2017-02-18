@@ -10,7 +10,7 @@ install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
  - shopt -s expand_aliases
  - alias ls="ls -lh"
- - echo "test" > /usr/bin/some_command.sh
+ - echo "test" > some_command.sh
  - echo "ls -lh $@" >> /usr/bin/some_command.sh
  - chmod +x /usr/bin/some_command.sh
 
