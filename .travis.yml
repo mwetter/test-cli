@@ -2,9 +2,11 @@ language: python
 python:
   - "2.7"
  
+ before_install:
+ - sudo apt-get install -y python-tidylib
+ 
  # command to install dependencies
-install: 
- - pip install python-tidylib
+install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
 
 script:
