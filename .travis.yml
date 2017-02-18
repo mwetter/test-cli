@@ -22,7 +22,7 @@ script:
   - echo ${PATH}
   - ls .
   - pwd
-  - cat some_command
-  - ./some_command /home/travis/build/mwetter/test-cli/Buildings
+  - cat /usr/local/bin/some_command
+  - some_command /home/travis/build/mwetter/test-cli/Buildings
   - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
  
