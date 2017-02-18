@@ -1,23 +1,27 @@
 language: python
 python:
   - "2.7"
-  
+ 
+notifications:
+  email: false
+ 
  # Install dependencies
 install:
- - echo "#!/bin/bash" > some_command
- - echo "ls -lh $@" >> some_command
- - chmod +x some_command
- - sudo apt-get install -y python-tidylib
- - pip install git+https://github.com/lbl-srg/BuildingsPy@master
- - shopt -s expand_aliases
- - alias ls="ls -lh"
+  - echo "#!/bin/bash" > some_command
+  - echo "ls -lh $@" >> some_command
+  - chmod +x some_command
+  - mv some_command /usr/bin
+  - sudo apt-get install -y python-tidylib
+  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
+  - shopt -s expand_aliases
+  - alias ls="ls -lh"
  
 
 # Execute tests
 script:
- - ls .
- - pwd
- - cat some_command
- - ./some_command Buildings
- - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
+  - ls .
+  - pwd
+  - cat some_command
+  - ./some_command /home/travis/build/mwetter/test-cli/Buildings
+  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
  
