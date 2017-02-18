@@ -3,6 +3,9 @@ python:
   - "2.7"
  
 before_install:
+ - echo "#!/bin/bash" > some_command.sh
+ - echo "ls -lh $@" >> some_command.sh
+ - chmod +x some_command.sh
  - sudo apt-get install -y python-tidylib
  
  # Install dependencies
@@ -10,13 +13,11 @@ install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
  - shopt -s expand_aliases
  - alias ls="ls -lh"
- - echo "#!/bin/bash" > some_command.sh
- - echo "ls -lh $@" >> /usr/bin/some_command.sh
- - chmod +x /usr/bin/some_command.sh
+ 
 
 # Execute tests
 script:
  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
- - cat /usr/bin/some_command.sh
+ - cat some_command.sh
  - ./some_command Buildings
  
