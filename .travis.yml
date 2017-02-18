@@ -8,6 +8,7 @@ before_install:
  # Install dependencies
 install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
+ - shopt -s expand_aliases
 
 # Execute tests
 script:
