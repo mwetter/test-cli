@@ -8,7 +8,7 @@ notifications:
  # Install dependencies
 install:
   - echo "#!/bin/bash" > some_command
-  - echo "ls -lh \"$@\"" >> some_command
+  - echo "ls -lh \"\$\@\"" >> some_command
   - chmod +x some_command
   - sudo mv some_command /usr/local/bin
   - sudo apt-get install -y python-tidylib
@@ -20,9 +20,9 @@ install:
 # Execute tests
 script:
   - echo ${PATH}
-  - ls .
   - pwd
   - cat /usr/local/bin/some_command
-  - some_command /home/travis/build/mwetter/test-cli/Buildings
+  - some_command
+  - some_command -m
   - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
  
