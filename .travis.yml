@@ -12,4 +12,5 @@ install:
 # Execute tests
 script:
  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
+ - alias ls="ls -lh" && ls .
  
