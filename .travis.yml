@@ -1,15 +1,13 @@
 language: python
 python:
   - "2.7"
- 
-before_install:
+  
+ # Install dependencies
+install:
  - echo "#!/bin/bash" > some_command.sh
  - echo "ls -lh $@" >> some_command.sh
  - chmod +x some_command.sh
  - sudo apt-get install -y python-tidylib
- 
- # Install dependencies
-install:
  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
  - shopt -s expand_aliases
  - alias ls="ls -lh"
@@ -17,7 +15,9 @@ install:
 
 # Execute tests
 script:
- - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
+ - ls .
+ - pwd
  - cat some_command.sh
  - ./some_command Buildings
+ - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
  
