@@ -4,3 +4,5 @@ python:
  
  # command to install dependencies
 install: "pip install git+https://github.com/lbl-srg/BuildingsPy@master"
+
+sudo: true
