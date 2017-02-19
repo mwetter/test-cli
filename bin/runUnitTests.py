@@ -26,11 +26,11 @@
 # MWetter@lbl.gov                            2011-02-23
 #######################################################
 
-def _validate_html():
+def _validate_html(path):
     import buildingspy.development.validator as v
 
     val = v.Validator()
-    errMsg = val.validateHTMLInPackage(".")
+    errMsg = val.validateHTMLInPackage(path)
     n_msg = len(errMsg)
     for i in range(n_msg):
         if i == 0:
