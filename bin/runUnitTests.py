@@ -56,11 +56,12 @@ def _setEnvironmentVariables(var, value):
     else:
         os.environ[var] = value
 
-def _runUnitTests(batch, single_package, n_pro, show_gui):
+def _runUnitTests(batch, single_package, path, n_pro, show_gui):
     import buildingspy.development.regressiontest as u
 
     ut = u.Tester()
     ut.batchMode(batch)
+    ut.setLibraryRoot(path)
     if single_package is not None:
         ut.setSinglePackage(single_package)
     ut.setNumberOfThreads(n_pro)
@@ -102,6 +103,10 @@ if __name__ == '__main__':
     unit_test_group.add_argument('-s', "--single-package",
                         metavar="Modelica.Package",
                         help="Test only the Modelica package Modelica.Package")
+    unit_test_group.add_argument("-p", "--path",
+                        default = ".",
+                        help="Path where top-level package.mo of the library is located")
+
     unit_test_group.add_argument("-n", "--number-of-processors",
                         type=int,
                         default = multiprocessing.cpu_count(),
@@ -139,7 +144,7 @@ if __name__ == '__main__':
 
     if args.validate_html_only:
         # Validate the html syntax only, and then exit
-        ret_val = _validate_html()
+        ret_val = _validate_html(args.path)
         exit(ret_val)
 
     if args.single_package:
@@ -149,6 +154,7 @@ if __name__ == '__main__':
 
     retVal = _runUnitTests(batch = args.batch,
                            single_package = single_package,
+                           path = args.path,
                            n_pro = args.number_of_processors,
                            show_gui = args.show_gui)
     exit(retVal)
