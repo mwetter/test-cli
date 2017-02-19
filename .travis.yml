@@ -31,4 +31,4 @@ script:
   - python ../bin/runUnitTests.py -b
  
 after_failure:
-  - cat Buildings/simulator.log  
+  - cat simulator.log  
