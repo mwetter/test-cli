@@ -1,0 +1,104 @@
+// Conversion script for Buildings library
+//  from: Version 3.0
+//  to:   Version 4.0
+clear
+
+convertClear();
+
+// Heat pumps and chillers based on Carnot efficiency
+convertModifiers({"Buildings.Fluid.Chillers.BaseClasses.Carnot"},
+                  {"effInpEva"},
+                  fill("", 0),
+                  true);
+
+convertModifiers({"Buildings.Fluid.Chillers.BaseClasses.Carnot"},
+                  {"effInpCon"},
+                  fill("", 0),
+                  true);
+
+// Pressure drop
+convertModifiers({"Buildings.Fluid.FixedResistances.FixedResistanceDpM"},
+                  {"dh"},
+                  fill("", 0),
+                  true);
+
+convertModifiers({"Buildings.Fluid.FixedResistances.FixedResistanceDpM"},
+                  {"ReC"},
+                  fill("", 0),
+                  true);
+
+convertModifiers({"Buildings.Fluid.FixedResistances.FixedResistanceDpM"},
+                  {"use_dh"},
+                  fill("", 0),
+                  true);
+
+convertClass("Buildings.Fluid.FixedResistances.FixedResistanceDpM",
+             "Buildings.Fluid.FixedResistances.PressureDrop");
+
+// Flow junction
+convertModifiers({"Buildings.Fluid.FixedResistances.SplitterFixedResistanceDpM"},
+                  {"dh"},
+                  fill("", 0),
+                  true);
+
+convertModifiers({"Buildings.Fluid.FixedResistances.SplitterFixedResistanceDpM"},
+                  {"ReC"},
+                  fill("", 0),
+                  true);
+
+convertModifiers({"Buildings.Fluid.FixedResistances.SplitterFixedResistanceDpM"},
+                  {"use_dh"},
+                  fill("", 0),
+                  true);
+
+convertClass("Buildings.Fluid.FixedResistances.SplitterFixedResistanceDpM",
+             "Buildings.Fluid.FixedResistances.Junction");
+
+// CFD
+convertModifiers({"Buildings.ThermalZones.Detailed.BaseClasses.CFDExchange"},
+                  {"uStart"},
+                  fill("", 0),
+                  true);
+
+convertClass("Buildings.Fluid.HeatExchangers.Boreholes",
+             "Buildings.Fluid.HeatExchangers.Ground.Boreholes")
+
+convertClass("Buildings.Rooms",
+             "Buildings.ThermalZones.Detailed");
+
+convertModifiers({"Buildings.Controls.Continuous.LimPID"},
+                  {"limitsAtInit"},
+                  fill("", 0),
+                  true);
+convertModifiers({"Buildings.Controls.Continuous.PIDHysteresis"},
+                  {"limitsAtInit"},
+                  fill("", 0),
+                  true);
+convertModifiers({"Buildings.Controls.Continuous.PIDHysteresisTimer"},
+                  {"limitsAtInit"},
+                  fill("", 0),
+                  true);
+
+convertClass("Buildings.Fluid.FMI.InletAdaptor",
+             "Buildings.Fluid.FMI.Adaptors.Inlet");
+convertClass("Buildings.Fluid.FMI.OutletAdaptor",
+             "Buildings.Fluid.FMI.Adaptors.Outlet");
+
+convertClass("Buildings.Fluid.FMI.TwoPort",
+             "Buildings.Fluid.FMI.ExportContainers.PartialTwoPort");
+convertClass("Buildings.Fluid.FMI.TwoPortComponent",
+             "Buildings.Fluid.FMI.ExportContainers.ReplaceableTwoPort");
+
+convertElement("Buildings.Controls.SetPoints.Table",
+               "nCol",
+               "nRow");
+
+convertElement("Buildings.Fluid.HeatExchangers.CoolingTowers.BaseClasses.Characteristics.efficiency",
+               "eta",
+               "r_P");
+convertClass("Buildings.Fluid.HeatExchangers.CoolingTowers.BaseClasses.Characteristics.efficiency",
+             "Buildings.Fluid.HeatExchangers.CoolingTowers.BaseClasses.Characteristics.normalizedPower");
+
+convertClass("Buildings.Fluid.HeatExchangers.CoolingTowers.BaseClasses.Characteristics.efficiencyParameters",
+             "Buildings.Fluid.HeatExchangers.CoolingTowers.BaseClasses.Characteristics.fan");
+
