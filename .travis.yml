@@ -11,6 +11,11 @@ git:
 services:
   - docker
 
+env:
+  - UNITTESTS=--validate-html-only
+  - UNITTESTS="-b -s Buildings.Controls.Continuous.Examples"
+  - UNITTESTS="-b -s Buildings.Controls.Continuous.Validation"
+
 # Enable system site packages in virtualenv so BuildingsPy sees scipy and matplotlib
 virtualenv:
   system_site_packages: true
@@ -26,10 +31,9 @@ install:
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
   - sudo mv Buildings/Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
 
-# Execute tests. Wait 6 hours for test to complete
+# Execute tests. Wait 60 minutes for test to complete
 script:
-  - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - (cd Buildings && travis_wait 360 python ../bin/runUnitTests.py -b --number-of-processors 8)
+  - (cd Buildings && travis_wait 60 python ../bin/runUnitTests.py $UNITTESTS)
 
 after_failure:
   - cat Buildings/simulator.log
