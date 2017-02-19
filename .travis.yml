@@ -16,7 +16,7 @@ virtualenv:
   system_site_packages: true
 
 before_install:
-  - sudo apt-get install -q python-numpy python-scipy python-matplotlib
+  - sudo apt-get install -qq python-numpy python-scipy python-matplotlib
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker pull "$DOCKER_USERNAME"/travis_ubuntu-1604_dymola-2017fd01-x86-64
 
@@ -30,7 +30,7 @@ install:
 script:
   - cat /usr/local/bin/dymola
   - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - (cd Buildings && python ../bin/runUnitTests.py -b -s Buildings.ThermalZones.Detailed.Examples.FFD.Tutorial)
+  - (cd Buildings && python ../bin/runUnitTests.py -b --number-of-processors 8)
 
 after_failure:
   - cat Buildings/simulator.log
