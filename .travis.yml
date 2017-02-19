@@ -29,7 +29,7 @@ install:
 # Execute tests. Wait 6 hours for test to complete
 script:
   - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - travis_wait 360 (cd Buildings && python ../bin/runUnitTests.py -b --number-of-processors 8)
+  - (cd Buildings && travis_wait 360 python ../bin/runUnitTests.py -b --number-of-processors 8)
 
 after_failure:
   - cat Buildings/simulator.log
