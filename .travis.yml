@@ -26,11 +26,10 @@ install:
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
   - sudo mv Buildings/Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
 
-# Execute tests
+# Execute tests. Wait 6 hours for test to complete
 script:
-  - cat /usr/local/bin/dymola
   - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - (cd Buildings && python ../bin/runUnitTests.py -b --number-of-processors 8)
+  - travis_wait 360 (cd Buildings && python ../bin/runUnitTests.py -b --number-of-processors 8)
 
 after_failure:
   - cat Buildings/simulator.log
