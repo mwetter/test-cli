@@ -25,7 +25,7 @@ install:
    \"Xvfb :77  -extension RANDR & \
    export DISPLAY=:77.0 && \
    cd /mnt/shared && \
-   dymola runAll.mos /nowindow\""
+   dymola runAll.mos /nowindow\"" >> dymola
   - chmod +x dymola
   - sudo mv dymola /usr/local/bin/
   - sudo apt-get install -y python-tidylib
