@@ -28,7 +28,7 @@ before_install:
 # Install dependencies     - echo "ls -lh \"\$@\"" >> dymola
 install:
 #  - sudo apt-get install -q python-tidylib
-  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
+  - pip install git+https://github.com/lbl-srg/BuildingsPy@test-cli
   - sudo mv Buildings/Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
 
 # Execute tests
