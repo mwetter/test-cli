@@ -5,6 +5,9 @@ python:
 notifications:
   email: false
 
+git:
+  depth: 3
+
 services:
   - docker
 
@@ -27,7 +30,7 @@ install:
 script:
   - cat /usr/local/bin/dymola
   - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - (cd Buildings && python ../bin/runUnitTests.py -b -s Buildings.Utilities)
+  - (cd Buildings && python ../bin/runUnitTests.py -b -s Buildings.ThermalZones.Detailed.Examples.FFD.Tutorial)
 
 after_failure:
   - cat Buildings/simulator.log
