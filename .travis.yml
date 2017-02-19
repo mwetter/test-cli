@@ -35,7 +35,7 @@ install:
 # Execute tests
 script:
   - cat /usr/local/bin/dymola
-  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
-  - cd Buildings && python ../bin/runUnitTests.py --validate-html-only
-  - cd Buildings && python ../bin/runUnitTests.py -b
+  - cd Buildings
+  - python ../bin/runUnitTests.py --validate-html-only
+  - python ../bin/runUnitTests.py -b
  
