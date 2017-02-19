@@ -14,20 +14,7 @@ before_install:
 # Install dependencies     - echo "ls -lh \"\$@\"" >> dymola
 install:
 #  - docker pull michaelwetter/travis_ubuntu-1604_dymola-2017fd01-x86-64
-  - echo "#!/bin/bash" > dymola
-  - echo "docker run \
-   --mac-address=${MAC_ADDRESS} \
-   --detach=false \
-   --rm \
-   --user=developer \
-   -v `pwd`:/mnt/shared \
-   michaelwetter/travis_ubuntu-1604_dymola-2017fd01-x86-64 /bin/bash -c \
-   \"Xvfb :77  -extension RANDR & \
-   export DISPLAY=:77.0 && \
-   cd /mnt/shared && \
-   dymola runAll.mos /nowindow\"" >> dymola
-  - chmod +x dymola
-  - sudo mv dymola /usr/local/bin/
+  - sudo mv Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
   - sudo apt-get install -y python-tidylib
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
  
