@@ -27,7 +27,7 @@ install:
 script:
   - cat /usr/local/bin/dymola
   - (cd Buildings && python ../bin/runUnitTests.py --validate-html-only)
-  - (cd Buildings && python ../bin/runUnitTests.py -b)
+  - (cd Buildings && python ../bin/runUnitTests.py -b -s Buildings.Utilities)
 
 after_failure:
   - cat Buildings/simulator.log
