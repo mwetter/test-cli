@@ -12,22 +12,27 @@ services:
   - docker
 
 env:
-  - UNITTESTS=--validate-html-only
-  - UNITTESTS="-b -s Buildings.Controls"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.BaseClasses"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Constructions"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Examples.Controls"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Examples.FFD"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.FLEXLAB"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.BESTEST"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.LBNL_71T"
-  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.TestConditionalConstructions"
-  - UNITTESTS="-b -s Buildings.Examples.ChillerPlant"
-  - UNITTESTS="-b -s Buildings.Examples.DualFanDualDuct"
-  - UNITTESTS="-b -s Buildings.Examples.HydronicHeating"
-  - UNITTESTS="-b -s Buildings.Examples.Tutorial"
-  - UNITTESTS="-b -s Buildings.Examples.VAVCO2"
-  - UNITTESTS="-b -s Buildings.Examples.VAVReheat"
+  - TEST_ARG=--validate-html-only
+  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Examples"
+  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Validation"
+  - TEST_ARG="-b -s Buildings.Experimental"
+  - TEST_ARG="-b -s Buildings.Fluid"
+  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.FLEXLAB"
+  - TEST_ARG="-b -s Buildings.Electrical"
+  - TEST_ARG="-b -s Buildings.Airflow"
+  - TEST_ARG="-b -s Buildings.BoundaryConditions"
+  - TEST_ARG="-b -s Buildings.Controls"
+  - TEST_ARG="-b -s Buildings.Examples.ChillerPlant"
+  - TEST_ARG="-b -s Buildings.Examples.DualFanDualDuct"
+  - TEST_ARG="-b -s Buildings.Examples.HydronicHeating"
+  - TEST_ARG="-b -s Buildings.Examples.Tutorial"
+  - TEST_ARG="-b -s Buildings.Examples.VAVCO2"
+  - TEST_ARG="-b -s Buildings.Examples.VAVReheat"
+  - TEST_ARG="-b -s Buildings.HeatTransfer"
+  - TEST_ARG="-b -s Buildings.Media"
+  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.BaseClasses"
+  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Constructions"
+  - TEST_ARG="-b -s Buildings.Utilities"
 
 # Enable system site packages in virtualenv so BuildingsPy sees scipy and matplotlib
 virtualenv:
@@ -46,7 +51,7 @@ install:
 
 # Execute tests
 script:
-  - (cd Buildings && travis_wait 3600 python ../bin/runUnitTests.py $UNITTESTS)
+  - (cd Buildings && travis_wait 3600 python ../bin/runUnitTests.py $TEST_ARG)
 
 after_failure:
   - cat Buildings/simulator.log
