@@ -11,7 +11,7 @@ services:
 before_install:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker pull "$DOCKER_USERNAME"/travis_ubuntu-1604_dymola-2017fd01-x86-64
-  - sudo apt-get install -y python-scipy python-matplotlib python-tidylib
+  - sudo apt-get install -y python-numpy python-scipy python-matplotlib python-tidylib
   
 # Install dependencies     - echo "ls -lh \"\$@\"" >> dymola
 install:
