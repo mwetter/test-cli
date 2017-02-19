@@ -10,10 +10,10 @@ services:
  
 before_install:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+  - docker pull michaelwetter/travis_ubuntu-1604_dymola-2017fd01-x86-64
 
 # Install dependencies     - echo "ls -lh \"\$@\"" >> dymola
 install:
-#  - docker pull michaelwetter/travis_ubuntu-1604_dymola-2017fd01-x86-64
   - sudo mv Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
   - sudo apt-get install -y python-tidylib
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
