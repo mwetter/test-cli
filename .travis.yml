@@ -13,8 +13,6 @@ install:
   - sudo mv some_command /usr/local/bin
   - sudo apt-get install -y python-tidylib
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
-  - shopt -s expand_aliases
-  - alias ls="ls -lh"
  
 
 # Execute tests
