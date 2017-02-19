@@ -1,7 +1,7 @@
 language: python
 python:
   - "2.7"
- 
+
 notifications:
   email: false
 
@@ -10,25 +10,24 @@ services:
 
 # Enable system site packages in virtualenv so BuildingsPy sees scipy and matplotlib
 virtualenv:
-  system_site_packages: true 
- 
+  system_site_packages: true
+
 before_install:
   - sudo apt-get install -q python-numpy python-scipy python-matplotlib
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker pull "$DOCKER_USERNAME"/travis_ubuntu-1604_dymola-2017fd01-x86-64
-  
+
 # Install dependencies     - echo "ls -lh \"\$@\"" >> dymola
 install:
 #  - sudo apt-get install -q python-tidylib
   - pip install git+https://github.com/lbl-srg/BuildingsPy@master
-  - sudo mv Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/ 
+  - sudo mv Buildings/Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
 
 # Execute tests
 script:
   - cat /usr/local/bin/dymola
-  - cd Buildings
-  - python ../bin/runUnitTests.py --validate-html-only
-  - python ../bin/runUnitTests.py -b
- 
+  - python bin/runUnitTests.py --validate-html-only
+  - python bin/runUnitTests.py -b
+
 after_failure:
-  - cat simulator.log  
+  - cat Buildings/simulator.log  
