@@ -13,8 +13,21 @@ services:
 
 env:
   - UNITTESTS=--validate-html-only
-  - UNITTESTS="-b -s Buildings.Controls.Continuous.Examples"
-  - UNITTESTS="-b -s Buildings.Controls.Continuous.Validation"
+  - UNITTESTS="-b -s Buildings.Controls"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.BaseClasses"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Constructions"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Examples.Controls"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Examples.FFD"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.FLEXLAB"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.BESTEST"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.LBNL_71T"
+  - UNITTESTS="-b -s Buildings.ThermalZones.Detailed.Validation.TestConditionalConstructions"
+  - UNITTESTS="-b -s Buildings.Examples.ChillerPlant"
+  - UNITTESTS="-b -s Buildings.Examples.DualFanDualDuct"
+  - UNITTESTS="-b -s Buildings.Examples.HydronicHeating"
+  - UNITTESTS="-b -s Buildings.Examples.Tutorial"
+  - UNITTESTS="-b -s Buildings.Examples.VAVCO2"
+  - UNITTESTS="-b -s Buildings.Examples.VAVReheat"
 
 # Enable system site packages in virtualenv so BuildingsPy sees scipy and matplotlib
 virtualenv:
