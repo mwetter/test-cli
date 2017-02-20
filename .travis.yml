@@ -13,6 +13,7 @@ services:
 
 env:
   - TEST_ARG=--validate-html-only
+  - TEST_ARG="-b -s Buildings.Utilities"
 #  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Examples"
 #  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Validation"
 #  - TEST_ARG="-b -s Buildings.Experimental"
@@ -35,14 +36,13 @@ env:
 #  - TEST_ARG="-b -s Buildings.Media"
 #  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.BaseClasses"
 #  - TEST_ARG="-b -s Buildings.ThermalZones.Detailed.Constructions"
-  - TEST_ARG="-b -s Buildings.Utilities"
 
 # Enable system site packages in virtualenv so BuildingsPy sees scipy and matplotlib
 virtualenv:
   system_site_packages: true
 
 before_install:
-#  - sudo apt-get install -qq python-numpy python-scipy python-matplotlib
+  - sudo apt-get install -qq python-numpy python-scipy python-matplotlib
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
   - docker pull "$DOCKER_USERNAME"/travis_ubuntu-1604_dymola-2017fd01-x86-64
 
