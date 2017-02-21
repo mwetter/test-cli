@@ -49,7 +49,7 @@ before_install:
 # Install dependencies
 install:
 #  - sudo apt-get install -q python-tidylib
-  - pip install git+https://github.com/lbl-srg/BuildingsPy@test-cli
+  - pip install git+https://github.com/lbl-srg/BuildingsPy@master
   - sudo mv Buildings/Resources/Scripts/travis/usr/local/bin/dymola /usr/local/bin/
 
 # Execute tests
